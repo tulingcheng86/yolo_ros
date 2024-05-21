@@ -28,3 +28,21 @@ Modified from [ros-yolov5](https://github.com/OuyangJunyuan/ros-yolov5), origina
 4. `roslaunch yolo_ros yolo_service.launch`
 
 5. play your rosbag.
+
+
+
+
+
+# 启动
+
+`roslaunch yolo_ros yolo_service.launch`
+
+然后播放自己的bag或者启动摄像头
+
+话题是`/camera/color/image_raw`
+
+
+
+**如果要显示检测框的话**
+
+将[`service_client.cpp`](/src/service_client.cpp)的注释取消掉
