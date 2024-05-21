@@ -55,19 +55,19 @@ void img_callback(sensor_msgs::Image::ConstPtr img_msg) {
       detection_msgs.data.push_back(dmsg);
       detection_msgs.detection_num++;
 
-      // cv::Point p1(dmsg.x1, dmsg.y1), p2(dmsg.x2, dmsg.y2), wh = p2 - p1;
-      // auto thickness = cv::min(wh.x, wh.y);
-      // cv::rectangle(img, p1, p2, cv::Scalar(255, 0, 0), thickness / 40 + 1);
-      // cv::putText(img, result.label, p1, cv::FONT_HERSHEY_COMPLEX, 1,
-      //             cv::Scalar(0, 0, 255), 1, 0);
-      //            cout << result.label << endl;
+      cv::Point p1(dmsg.x1, dmsg.y1), p2(dmsg.x2, dmsg.y2), wh = p2 - p1;
+      auto thickness = cv::min(wh.x, wh.y);
+      cv::rectangle(img, p1, p2, cv::Scalar(255, 0, 0), thickness / 40 + 1);
+      cv::putText(img, result.label, p1, cv::FONT_HERSHEY_COMPLEX, 1,
+                  cv::Scalar(0, 0, 255), 1, 0);
+                 cout << result.label << endl;
     }
     yolo_results_pub.publish(detection_msgs);
     // printf("YOLOv5 detect cost: %fs\n", ros::Time::now().toSec() - start_t);
   }
 
-  // cv::imshow("img", img);
-  // cv::waitKey(1);
+  cv::imshow("img", img);
+  cv::waitKey(1);
 }
 
 int main(int argc, char **argv) {
