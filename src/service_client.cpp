@@ -53,7 +53,6 @@ void process_image(const sensor_msgs::Image::ConstPtr& img_msg, ros::ServiceClie
                 cv::putText(img, result.label, p1, cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 255), 1, 0);
                 cout << result.label << endl;
             }
-
             publisher.publish(detection_msgs);
         }
 
