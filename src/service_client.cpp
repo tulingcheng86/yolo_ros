@@ -47,18 +47,18 @@ void process_image(const sensor_msgs::Image::ConstPtr& img_msg, ros::ServiceClie
                 detection_msgs.detection_num++;
 
                 // 可视化
-                cv::Point p1(dmsg.x1, dmsg.y1), p2(dmsg.x2, dmsg.y2), wh = p2 - p1;
-                auto thickness = cv::min(wh.x, wh.y);
-                cv::rectangle(img, p1, p2, cv::Scalar(255, 0, 0), thickness / 40 + 1);
-                cv::putText(img, result.label, p1, cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 255), 1, 0);
-                cout << result.label << endl;
+                // cv::Point p1(dmsg.x1, dmsg.y1), p2(dmsg.x2, dmsg.y2), wh = p2 - p1;
+                // auto thickness = cv::min(wh.x, wh.y);
+                // cv::rectangle(img, p1, p2, cv::Scalar(255, 0, 0), thickness / 40 + 1);
+                // cv::putText(img, result.label, p1, cv::FONT_HERSHEY_COMPLEX, 1, cv::Scalar(0, 0, 255), 1, 0);
+                // cout << result.label << endl;
             }
             publisher.publish(detection_msgs);
         }
 
         // 可视化
-        cv::imshow(window_name, img);
-        cv::waitKey(1);
+        // cv::imshow(window_name, img);
+        // cv::waitKey(1);
     } catch (const std::exception& e) {
         ROS_ERROR("Exception in process_image: %s", e.what());
     } catch (...) {
